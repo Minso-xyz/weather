@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, PickerIOSComponent } from "react-native";
 export default function Loading() {
     return ( 
     <View style={styles.container}>
-        <Text style={styles.text}>Let's get the weather. Senza scherzo.</Text>
+        <Text style={styles.text}>Senza scherzo.</Text>
     </View>
     );
 }
