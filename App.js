@@ -14,7 +14,8 @@ export default class extends React.Component {
   getWeather = async (latitude, longitude) => {
     const {
       data: {
-        main: { temp },
+        main: { temp, temp_min, temp_max},
+        sys: { country },
         weather
       }
 
@@ -23,8 +24,9 @@ export default class extends React.Component {
     );
     this.setState({
       isLoading: false,
-      condition: weather[0].main,
-      temp
+      temp, temp_min, temp_max,
+      country,
+      condition: weather[0].main
     });
   };
   getLocation = async () => {
@@ -42,11 +44,11 @@ export default class extends React.Component {
     this.getLocation();
   }
   render() {
-    const { isLoading, temp, condition, name } = this.state;
+    const { isLoading, temp, temp_min, temp_max, condition, country } = this.state;
     return isLoading ? (
       <Loading />
     ) : (
-      <Weather temp={Math.round(temp)} condition={condition} />
+      <Weather temp={Math.round(temp)} condition={condition} country={country} temp_min={Math.round(temp_min)} temp_max={Math.round(temp_max)} />
     );
   }
 }

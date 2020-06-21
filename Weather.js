@@ -20,14 +20,14 @@ const weatherOptions = {
   Rain: {
     iconName: "weather-rainy",
     gradient: ["#00C6FB", "#005BEA"],
-    title: "Raining like a MF",
+    title: "O dio che acqua!",
     subtitle: "Per ulteriori info guarda fuori"
   },
   Snow: {
     iconName: "weather-snowy",
     gradient: ["#7DE2FC", "#B9B6E5"],
-    title: "Che freddo",
-    subtitle: "Senza scherzo."
+    title: "Neve",
+    subtitle: "Che freddo. Senza scherzo."
   },
   Atmosphere: {
     iconName: "weather-hail",
@@ -35,14 +35,14 @@ const weatherOptions = {
   },
   Clear: {
     iconName: "white-balance-sunny",
-    gradient: ["#f7797d", "#FBD786", "#C6FFDD"],
+    gradient: ["#F09819", "#EDDE5D"],
     title: "Sole",
     subtitle: "Porca miseria che caldo"
   },
   Clouds: {
     iconName: "weather-cloudy",
     gradient: ["#D7D2CC", "#304352"],
-    title: "Clouds",
+    title: "Nuvole",
     subtitle: "Meh. Che noia."
   },
   Mist: {
@@ -54,7 +54,7 @@ const weatherOptions = {
   Dust: {
     iconName: "weather-hail",
     gradient: ["#4DA0B0", "#D39D38"],
-    title: "Dusty",
+    title: "Polverioso",
     subtitle: "Metti la mascherina"
   },
   Haze: {
@@ -65,7 +65,7 @@ const weatherOptions = {
   }
 };
 
-export default function Weather({ temp, condition }) {
+export default function Weather({ temp, temp_max, temp_min, condition, country }) {
   return (
     <LinearGradient
       colors={weatherOptions[condition].gradient}
@@ -73,12 +73,18 @@ export default function Weather({ temp, condition }) {
     >
       <StatusBar barStyle="light-content" />
       <View style={styles.halfContainer}>
+        
+        <Text style={styles.temp_mini}>(Location), {country} </Text>
+        <Text style={styles.temp}>{temp}°C</Text>
+        <Text style={styles.temp_mini}>{temp_min}°C / {temp_max}°C</Text>
+        <Text style={styles.temp_mini}></Text>
+
         <MaterialCommunityIcons
-          size={96}
+          size={100}
           name={weatherOptions[condition].iconName}
           color="white"
         />
-        <Text style={styles.temp}>{temp}°</Text>
+
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.title}>{weatherOptions[condition].title}</Text>
@@ -92,6 +98,8 @@ export default function Weather({ temp, condition }) {
 
 Weather.propTypes = {
   temp: PropTypes.number.isRequired,
+  temp_min: PropTypes.number.isRequired,
+  temp_max: PropTypes.number.isRequired,
   condition: PropTypes.oneOf([
     "Thunderstorm",
     "Drizzle",
@@ -111,8 +119,12 @@ const styles = StyleSheet.create({
     flex: 1
   },
   temp: {
-    fontSize: 42,
+    fontSize: 60,
     color: "white"
+  },
+  temp_mini:{
+      fontSize: 25,
+      color: "white"
   },
   halfContainer: {
     flex: 1,
