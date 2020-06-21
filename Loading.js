@@ -1,26 +1,25 @@
 import React from "react";
-import { StyleSheet, Text, View, PickerIOSComponent } from "react-native";
+import { StyleSheet, Text, View, StatusBar } from "react-native";
 
 export default function Loading() {
-    return ( 
+  return (
     <View style={styles.container}>
-        <Text style={styles.text}>Senza scherzo.</Text>
+      <StatusBar barStyle="dark-content" />
+      <Text style={styles.text}>Meh</Text>
     </View>
-    );
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "flex-end",
-        paddingHorizontal: 30,
-        paddingVertical: 100,
-        backgroundColor : "skyblue"
-    },
-
-    text: {
-        color: "#5c5c5c",
-        fontSize: 30
-    }
-
+  container: {
+    flex: 1,
+    justifyContent: "flex-end",
+    paddingHorizontal: 30,
+    paddingVertical: 100,
+    backgroundColor: "pink"
+  },
+  text: {
+    color: "#2c2c2c",
+    fontSize: 30
+  }
 });
