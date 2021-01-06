@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@react-native-community/netinfo": "5.5.1",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "db-migrate": "^0.11.11",
     "expo": "^37.0.0",
     "expo-location": "~8.1.0",
